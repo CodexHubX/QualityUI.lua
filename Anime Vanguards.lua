@@ -260,7 +260,7 @@ function Library.Create(name,parent,Title,SaveManager,default)
         --UDim2.new(1, -90, 0, 35)
         buyButton.BackgroundColor3 = Color3.fromRGB(100, 200, 100)
         buyButton.BackgroundTransparency = 1;
-        
+
         buyButton.Text = ""
         buyButton.Font = Enum.Font.GothamBold
         buyButton.TextSize = 18
@@ -277,14 +277,17 @@ function Library.Create(name,parent,Title,SaveManager,default)
             CreateList(itemName,imageId,Gradient)
         end)
 
-        shopUI.List[itemName] = imageId
+        shopUI.List[itemName] = {
+            ['imageId'] = imageId,
+            ['Gradient'] = Gradient,
+        }
     end
 
     function shopUI.LoadDefault()
         for i,v in next, Settings[default] do 
-            local imageId = shopUI.List[v]
-            if imageId then 
-                CreateList(v,imageId)
+            local imagedata = shopUI.List[v]
+            if imagedata then 
+                CreateList(v,imagedata['imageId'],imagedata['Gradient'])
             end;
         end;
     end;
