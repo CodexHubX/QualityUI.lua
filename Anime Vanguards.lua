@@ -94,7 +94,7 @@ function Library.Create(name,parent,Title,SaveManager,default)
     closeCorner.CornerRadius = UDim.new(1, 0)
     closeCorner.Parent = closeButton
     
-    closeButton.MouseButton1Click:Connect(function()
+    closeButton.Activated:Connect(function()
         screenGui.Enabled = false
     end)
     
@@ -168,7 +168,7 @@ function Library.Create(name,parent,Title,SaveManager,default)
         selectedItemLabel.TextSize = 16
         selectedItemLabel.Parent = selectedItemFrame
         
-        selectedItemFrame.MouseButton1Click:Connect(function()
+        selectedItemFrame.Activated:Connect(function()
 
             local key = table.find(Settings[default], itemName)
             local key2 = table.find(shopUI.Select, itemName)
@@ -273,7 +273,7 @@ function Library.Create(name,parent,Title,SaveManager,default)
             newGradient.Parent = itemImage
         end;
 
-        buyButton.MouseButton1Click:Connect(function()
+        buyButton.Activated:Connect(function()
             CreateList(itemName,imageId,Gradient)
         end)
 
@@ -296,7 +296,6 @@ function Library.Create(name,parent,Title,SaveManager,default)
 end;
 
 return Library;
-
 
 
 
